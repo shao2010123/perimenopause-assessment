@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1800" viewBox="0 0 900 1800" role="img" aria-labelledby="title desc">
+  <title id="title">沃医健康更年期健康服务专题页最终效果</title>
+  <desc id="desc">按顺序展示六个更年期健康服务产品，底部展示由沃医健康与本爱医疗共同研发。</desc>
+  <defs>
+    <linearGradient id="screenBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F0FBFA"/>
+      <stop offset="0.56" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFF3EA"/>
+    </linearGradient>
+    <linearGradient id="heroBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#E6FAF7"/>
+      <stop offset="0.7" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFF4E3"/>
+    </linearGradient>
+    <linearGradient id="activeBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FFF7ED"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="26" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+    <filter id="cardShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .brand { font: 700 18px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #0F766E; }
+      .hero-title { font: 800 34px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #12345A; }
+      .hero-text { font: 400 17px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #475569; }
+      .section-title { font: 700 22px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #163A5F; }
+      .card-title { font: 700 19px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #163A5F; }
+      .desc { font: 400 13px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #64748B; }
+      .product-desc { font: 400 12px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #64748B; }
+      .status { font: 700 13px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #64748B; }
+      .open-status { font: 700 13px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #FFFFFF; }
+      .button { font: 700 16px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #FFFFFF; }
+      .footer { font: 400 14px "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #64748B; }
+    </style>
+  </defs>
+
+  <rect width="900" height="1800" fill="#F6FAFC"/>
+  <g transform="translate(170 54)" filter="url(#shadow)">
+    <rect width="560" height="1690" rx="64" fill="#FFFFFF"/>
+    <rect x="26" y="28" width="508" height="1634" rx="42" fill="url(#screenBg)" stroke="#E2E8F0"/>
+
+    <g transform="translate(58 66)">
+      <rect width="444" height="44" rx="22" fill="#FFFFFF" opacity="0.82"/>
+      <text x="22" y="29" class="brand">WEHEAL 沃医健康</text>
+      <circle cx="394" cy="22" r="4.5" fill="#64748B"/>
+      <circle cx="412" cy="22" r="4.5" fill="#64748B"/>
+      <circle cx="430" cy="22" r="4.5" fill="#64748B"/>
+
+      <rect y="72" width="444" height="210" rx="28" fill="url(#heroBg)" stroke="#99F6E4"/>
+      <text x="26" y="118" class="hero-title">更年期健康服务</text>
+      <text x="26" y="154" class="hero-text">龚晓明医师团队</text>
+      <text x="26" y="184" class="hero-text">面向 30 至 65 岁女性</text>
+      <text x="26" y="218" class="desc">科普认知、问卷筛查、居家检测、报告解读</text>
+      <text x="26" y="244" class="desc">与线上线下服务路径，一站式承接健康管理。</text>
+      <g transform="translate(330 118)" opacity="0.22">
+        <circle cx="48" cy="48" r="44" fill="#FFFFFF"/>
+        <path d="M49 14c12 8 16 21 9 33-5 9-17 15-17 27 0 9 7 15 16 18" fill="none" stroke="#0EA5A4" stroke-width="8" stroke-linecap="round"/>
+        <path d="M30 52c22 10 30 23 26 52" fill="none" stroke="#F97316" stroke-width="6" stroke-linecap="round"/>
+      </g>
+
+      <text x="0" y="334" class="section-title">服务产品</text>
+
+      <g transform="translate(0 360)" filter="url(#cardShadow)">
+        <rect width="444" height="104" rx="22" fill="#FFFFFF" stroke="#DCEBFF"/>
+        <circle cx="34" cy="36" r="17" fill="#DBEAFE"/>
+        <text x="29" y="42" font-family="Arial" font-size="16" font-weight="700" fill="#2563EB">1</text>
+        <text x="64" y="38" class="card-title">科普激活</text>
+        <text x="342" y="38" class="status">敬请期待</text>
+        <text x="24" y="75" class="product-desc">更年期专题课，面向 30 至 65 岁女性，建立基础认知</text>
+      </g>
+
+      <g transform="translate(0 482)" filter="url(#cardShadow)">
+        <rect width="444" height="142" rx="24" fill="url(#activeBg)" stroke="#F97316" stroke-width="2"/>
+        <circle cx="34" cy="38" r="17" fill="#FFEDD5"/>
+        <text x="29" y="44" font-family="Arial" font-size="16" font-weight="700" fill="#EA580C">2</text>
+        <text x="64" y="40" class="card-title">¥19.9 问卷测评</text>
+        <text x="24" y="76" class="product-desc">个性化检测方案、生活方式干预建议</text>
+        <text x="24" y="102" class="product-desc">筛出阳性需求用户</text>
+        <rect x="300" y="84" width="120" height="40" rx="20" fill="#F97316"/>
+        <text x="328" y="110" class="button">立即购买</text>
+      </g>
+
+      <g transform="translate(0 642)" filter="url(#cardShadow)">
+        <rect width="444" height="104" rx="22" fill="#FFFFFF" stroke="#DFF7E7"/>
+        <circle cx="34" cy="36" r="17" fill="#DCFCE7"/>
+        <text x="29" y="42" font-family="Arial" font-size="16" font-weight="700" fill="#16A34A">3</text>
+        <text x="64" y="38" class="card-title">¥599 居家激素检测套装</text>
+        <text x="342" y="38" class="status">立即购买</text>
+        <text x="24" y="75" class="product-desc">指尖血样检测，面向症状或指标异常用户</text>
+      </g>
+
+      <g transform="translate(0 764)" filter="url(#cardShadow)">
+        <rect width="444" height="130" rx="22" fill="#FFFFFF" stroke="#DDEFFE"/>
+        <circle cx="34" cy="36" r="17" fill="#E0F2FE"/>
+        <text x="29" y="42" font-family="Arial" font-size="16" font-weight="700" fill="#0284C7">4</text>
+        <text x="64" y="38" class="card-title">¥69 检测报告解读</text>
+        <text x="342" y="38" class="status">敬请期待</text>
+        <text x="24" y="75" class="product-desc">多指标联合判读、生殖衰老分期</text>
+        <text x="24" y="101" class="product-desc">HRT 适龄性判断、监测复查建议</text>
+      </g>
+
+      <g transform="translate(0 912)" filter="url(#cardShadow)">
+        <rect width="444" height="154" rx="22" fill="#FFFFFF" stroke="#FCE1EE"/>
+        <circle cx="34" cy="36" r="17" fill="#FCE7F3"/>
+        <text x="29" y="42" font-family="Arial" font-size="16" font-weight="700" fill="#DB2777">5</text>
+        <text x="64" y="38" class="card-title">线上路径/线下门诊</text>
+        <text x="342" y="38" class="status">预约挂号</text>
+        <text x="24" y="75" class="product-desc">线上路径：医生 1v1 咨询、报告解读</text>
+        <text x="24" y="101" class="product-desc">服务组合购买等</text>
+        <text x="24" y="127" class="product-desc">线下门诊：专科就诊、报告解读、院内检测、长期随访等</text>
+      </g>
+
+      <g transform="translate(0 1084)" filter="url(#cardShadow)">
+        <rect width="444" height="144" rx="22" fill="#FFFFFF" stroke="#FADFC8"/>
+        <circle cx="34" cy="36" r="17" fill="#FFEDD5"/>
+        <text x="29" y="42" font-family="Arial" font-size="16" font-weight="700" fill="#EA580C">6</text>
+        <text x="64" y="38" class="card-title">更年期健康管理套餐</text>
+        <text x="342" y="38" class="status">敬请期待</text>
+        <text x="24" y="78" class="product-desc">绿灯档「安心计划」¥2,680/半年</text>
+        <text x="24" y="106" class="product-desc">黄灯档「舒心计划」¥3,980/半年</text>
+      </g>
+
+      <g transform="translate(0 1258)">
+        <rect width="444" height="108" rx="18" fill="#FBF8F5" stroke="#F0E8E2"/>
+        <text x="222" y="24" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Arial" font-size="10" font-weight="500" fill="#6E5C7C">由沃医健康与本爱医疗共同研发</text>
+
+        <rect x="10" y="38" width="208" height="54" rx="10" fill="#FFFFFF"/>
+        <text x="39" y="70" font-family="Georgia, Times New Roman, serif" font-size="17" fill="#33467D" textLength="70" lengthAdjust="spacingAndGlyphs">WEHEAL</text>
+        <path d="M126 47c6 4 8 10 4 16-3 5-9 8-9 15 0 5 4 9 9 11" fill="none" stroke="#0E9AA7" stroke-width="4" stroke-linecap="round"/>
+        <path d="M119 64c11 5 16 12 14 27" fill="none" stroke="#0E9AA7" stroke-width="2.5" stroke-linecap="round"/>
+        <rect x="139" y="64" width="10" height="2.5" rx="1.25" fill="#0E9AA7"/>
+        <text x="154" y="70" font-family="PingFang SC, Microsoft YaHei, Arial" font-size="12" letter-spacing="2" fill="#33467D">沃 医 健 康</text>
+
+        <rect x="226" y="38" width="208" height="54" rx="10" fill="#FFFFFF"/>
+        <text x="262" y="78" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="43" font-weight="900" fill="#2D215A">B</text>
+        <path d="M303 67c8-11 15-11 21 1 6 13 12 13 18 0 6-12 13-12 19 0" fill="none" stroke="#C31991" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M361 64c0-3 2-5 5-5 2 0 4 1 5 3 1-2 3-3 5-3 3 0 5 2 5 5 0 5-5 8-10 12-6-4-10-7-10-12z" fill="#E1188E"/>
+        <text x="388" y="70" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="2" font-weight="700" fill="#111111">BENAI</text>
+      </g>
+    </g>
+  </g>
+</svg>
