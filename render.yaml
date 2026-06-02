@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: perimenopause-assessment
+    runtime: node
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: FEISHU_BASE_TOKEN
+        value: B70ebq5NZabNDqszKATcQAWVnIe
+      - key: FEISHU_TABLE_ID
+        value: tblVMk0M7dvCXiv3
+      - key: FEISHU_PDF_FIELD_ID
+        value: fldhA2xBzb
+      - key: FEISHU_HTML_FIELD_ID
+        value: fldJYY5wWx
+      - key: FEISHU_CLI_FALLBACK
+        value: 0
+      - key: FEISHU_APP_ID
+        sync: false
+      - key: FEISHU_APP_SECRET
+        sync: false
