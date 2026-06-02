@@ -54,6 +54,40 @@ describe('submitReportToFeishu', () => {
     expect(recordBody['姓名昵称']).toBe('林女士');
   });
 
+  it('accepts the id field from Feishu record create responses', async () => {
+    const fetchImpl = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ code: 0, tenant_access_token: 'tenant_token' }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ code: 0, data: { record: { id: 'rec_from_id', fields: {} } } }),
+      });
+
+    const result = await submitReportToFeishu(
+      {
+        reportId: 'RPT-SERVER-ID',
+        createdAt: '2026-05-29T08:30:00.000Z',
+        userInfo: { name: '林女士', birthYear: 1984 },
+        answers: testCases.case1,
+        result: calculate(testCases.case1),
+      },
+      {
+        fetchImpl,
+        env: {
+          FEISHU_APP_ID: 'cli_test_app',
+          FEISHU_APP_SECRET: 'secret',
+          FEISHU_BASE_TOKEN: 'base_token',
+          FEISHU_TABLE_ID: 'table_id',
+        },
+      },
+    );
+
+    expect(result).toEqual({ success: true, recordId: 'rec_from_id' });
+  });
+
   it('falls back to lark-cli when app credentials are not configured', async () => {
     const runCli = vi.fn(async () => ({
       stdout: JSON.stringify({

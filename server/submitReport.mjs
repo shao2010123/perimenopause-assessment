@@ -75,8 +75,10 @@ function getBearerHeaders(tenantAccessToken, extra = {}) {
 function extractRecordId(payload) {
   return (
     payload.data?.record?.record_id ??
+    payload.data?.record?.id ??
     payload.data?.record?.record_id_list?.[0] ??
     payload.data?.record_id ??
+    payload.data?.id ??
     null
   );
 }
