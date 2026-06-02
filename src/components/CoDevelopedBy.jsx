@@ -1,7 +1,7 @@
 export const FOOTER_ATTRIBUTION_TEXT = '本报告由更年期健康智能分析系统自动生成';
 
 export const FOOTER_LEGAL_ITEMS = [
-  '©健康智能 湘ICP备2025133962号',
+  '©VitaAge 维龄智能 湘ICP备2025133962号',
   '隐私政策',
   '使用条款',
   '帮助中心',
