@@ -16,6 +16,8 @@ import StageTimeline from './StageTimeline.jsx';
 
 export const REPORT_ACTION_PRIMARY_CLASS = 'w-full sm:basis-4/5';
 export const REPORT_ACTION_SECONDARY_CLASS = 'w-full sm:basis-1/5';
+export const REPORT_ACTION_SECONDARY_BUTTON_CLASS =
+  `primary-outline-button ${REPORT_ACTION_SECONDARY_CLASS}`;
 
 function formatDate(value, compact = false) {
   if (!value) return '';
@@ -391,7 +393,7 @@ function ResultPage({
           <button
             type="button"
             onClick={onRestart}
-            className={`ghost-button ${REPORT_ACTION_SECONDARY_CLASS}`}
+            className={REPORT_ACTION_SECONDARY_BUTTON_CLASS}
           >
             重新测评
           </button>
