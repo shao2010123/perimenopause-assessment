@@ -172,6 +172,14 @@ function extractFileToken(payload) {
   return payload.data?.file_token ?? payload.file_token ?? null;
 }
 
+function buildAttachmentValue({ file_token: fileToken, name }) {
+  return {
+    deprecated_set_attachment: true,
+    file_token: fileToken,
+    name,
+  };
+}
+
 async function getPdfField(config, tenantAccessToken, fetchImpl) {
   const response = await fetchImpl(
     `${FEISHU_ORIGIN}/open-apis/base/v3/bases/${config.baseToken}/tables/${config.tableId}/fields/${config.pdfFieldId}`,
@@ -287,11 +295,8 @@ async function uploadReportPdfWithOpenApi(config, payload, fetchImpl) {
   const fileToken = await uploadPdfMedia(config, tenantAccessToken, { safeName: pdfName, pdfBase64: payload.pdfBase64 }, fetchImpl);
   const attachments = [
     ...existingAttachments,
-    {
-      file_token: fileToken,
-      name: pdfName,
-    },
-  ];
+    { file_token: fileToken, name: pdfName },
+  ].map(buildAttachmentValue);
   await patchPdfAttachment(config, tenantAccessToken, {
     recordId: payload.recordId,
     fieldName,
@@ -311,11 +316,8 @@ async function uploadReportHtmlWithOpenApi(config, payload, fetchImpl) {
   const fileToken = await uploadHtmlMedia(config, tenantAccessToken, { safeName: htmlName, htmlBase64: payload.htmlBase64 }, fetchImpl);
   const attachments = [
     ...existingAttachments,
-    {
-      file_token: fileToken,
-      name: htmlName,
-    },
-  ];
+    { file_token: fileToken, name: htmlName },
+  ].map(buildAttachmentValue);
   await patchHtmlAttachment(config, tenantAccessToken, {
     recordId: payload.recordId,
     fieldName,

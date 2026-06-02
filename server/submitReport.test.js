@@ -302,8 +302,8 @@ describe('uploadReportPdfToFeishu', () => {
     );
     const patchedFields = JSON.parse(fetchImpl.mock.calls[4][1].body);
     expect(patchedFields['PDF报告']).toEqual([
-      { file_token: 'old_file', name: 'old.pdf' },
-      { file_token: 'new_file', name: '林女士-RPT-PDF-OPENAPI.pdf' },
+      { deprecated_set_attachment: true, file_token: 'old_file', name: 'old.pdf' },
+      { deprecated_set_attachment: true, file_token: 'new_file', name: '林女士-RPT-PDF-OPENAPI.pdf' },
     ]);
   });
 
@@ -392,8 +392,8 @@ describe('uploadReportHtmlToFeishu', () => {
     expect(runCli).not.toHaveBeenCalled();
     const patchedFields = JSON.parse(fetchImpl.mock.calls[4][1].body);
     expect(patchedFields['HTML报告']).toEqual([
-      { file_token: 'old_html', name: 'old.html' },
-      { file_token: 'new_html', name: '林女士-RPT-HTML-OPENAPI.html' },
+      { deprecated_set_attachment: true, file_token: 'old_html', name: 'old.html' },
+      { deprecated_set_attachment: true, file_token: 'new_html', name: '林女士-RPT-HTML-OPENAPI.html' },
     ]);
   });
 
