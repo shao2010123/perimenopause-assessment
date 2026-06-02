@@ -1,5 +1,7 @@
+import { getRequiredPhoneError } from '../utils/contactValidation.js';
+
 function ContactForm({ userInfo, onChange, children }) {
-  const isPhoneMissing = !String(userInfo.phone ?? '').trim();
+  const phoneError = getRequiredPhoneError(userInfo.phone);
 
   return (
     <section className="surface-card space-y-5">
@@ -31,15 +33,16 @@ function ContactForm({ userInfo, onChange, children }) {
             type="tel"
             inputMode="tel"
             required
-            aria-invalid={isPhoneMissing}
+            maxLength={11}
+            aria-invalid={Boolean(phoneError)}
             value={userInfo.phone ?? ''}
             onChange={(event) => onChange('phone', event.target.value)}
             className="field-input"
             placeholder="请输入手机号"
           />
-          {isPhoneMissing ? (
+          {phoneError ? (
             <span className="text-xs leading-5 text-[var(--color-accent-coral)]">
-              保存 HTML 报告前请填写手机号。
+              {phoneError}
             </span>
           ) : null}
         </label>

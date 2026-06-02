@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { submitReportThenUploadPdf, uploadReportHtml } from '../api/saveReport.js';
-import { isRequiredPhoneFilled } from '../utils/contactValidation.js';
+import { isValidRequiredPhone } from '../utils/contactValidation.js';
 import { exportReportToHtml } from '../utils/htmlExport.js';
 import { buildHtmlSavedParts, HTML_BUSY_ERROR_MESSAGE } from '../utils/pdfStatusMessage.js';
 
 function PdfExport({ targetRef, userInfo, reportId, createdAt, answers, result }) {
   const [isExporting, setIsExporting] = useState(false);
   const [status, setStatus] = useState(null);
-  const canExport = isRequiredPhoneFilled(userInfo?.phone);
+  const canExport = isValidRequiredPhone(userInfo?.phone);
   const filename = `${userInfo?.name || '围绝经期'}-${reportId || '健康测评报告'}.html`;
 
   async function handleExport() {
