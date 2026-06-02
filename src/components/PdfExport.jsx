@@ -4,7 +4,7 @@ import { isValidRequiredPhone } from '../utils/contactValidation.js';
 import { exportReportToHtml } from '../utils/htmlExport.js';
 import { buildHtmlSavedParts, HTML_BUSY_ERROR_MESSAGE } from '../utils/pdfStatusMessage.js';
 
-function PdfExport({ targetRef, userInfo, reportId, createdAt, answers, result }) {
+function PdfExport({ targetRef, userInfo, reportId, createdAt, answers, result, className = 'flex-1' }) {
   const [isExporting, setIsExporting] = useState(false);
   const [status, setStatus] = useState(null);
   const canExport = isValidRequiredPhone(userInfo?.phone);
@@ -62,7 +62,7 @@ function PdfExport({ targetRef, userInfo, reportId, createdAt, answers, result }
   }
 
   return (
-    <div className="flex-1 space-y-2">
+    <div className={`${className} space-y-2`}>
       <button
         type="button"
         onClick={handleExport}

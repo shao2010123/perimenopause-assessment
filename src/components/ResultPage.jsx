@@ -14,6 +14,9 @@ import ContactForm from './ContactForm.jsx';
 import PdfExport from './PdfExport.jsx';
 import StageTimeline from './StageTimeline.jsx';
 
+export const REPORT_ACTION_PRIMARY_CLASS = 'w-full sm:basis-4/5';
+export const REPORT_ACTION_SECONDARY_CLASS = 'w-full sm:basis-1/5';
+
 function formatDate(value, compact = false) {
   if (!value) return '';
 
@@ -375,21 +378,25 @@ function ResultPage({
       </div>
 
       <ContactForm userInfo={userInfo} onChange={onUserInfoChange}>
-        <PdfExport
-          targetRef={reportRef}
-          answers={answers}
-          userInfo={userInfo}
-          result={result}
-          reportId={reportId}
-          createdAt={createdAt}
-        />
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <PdfExport
+            className={REPORT_ACTION_PRIMARY_CLASS}
+            targetRef={reportRef}
+            answers={answers}
+            userInfo={userInfo}
+            result={result}
+            reportId={reportId}
+            createdAt={createdAt}
+          />
+          <button
+            type="button"
+            onClick={onRestart}
+            className={`ghost-button ${REPORT_ACTION_SECONDARY_CLASS}`}
+          >
+            重新测评
+          </button>
+        </div>
       </ContactForm>
-
-      <div className="surface-card flex flex-col gap-3 sm:flex-row">
-        <button type="button" onClick={onRestart} className="ghost-button flex-1">
-          重新测评
-        </button>
-      </div>
     </section>
   );
 }
