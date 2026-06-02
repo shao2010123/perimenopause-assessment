@@ -10,6 +10,7 @@ import {
   generateSymptomSeverity,
 } from '../engine/reporting.js';
 import { maskPhone } from '../utils/phoneFormat.js';
+import CoDevelopedBy from './CoDevelopedBy.jsx';
 import ContactForm from './ContactForm.jsx';
 import PdfExport from './PdfExport.jsx';
 import StageTimeline from './StageTimeline.jsx';
@@ -18,6 +19,7 @@ export const REPORT_ACTION_PRIMARY_CLASS = 'w-full sm:basis-4/5';
 export const REPORT_ACTION_SECONDARY_CLASS = 'w-full sm:basis-1/5';
 export const REPORT_ACTION_SECONDARY_BUTTON_CLASS =
   `primary-outline-button ${REPORT_ACTION_SECONDARY_CLASS}`;
+export const REPORT_PAGE_FOOTER_COMPONENT = 'CoDevelopedBy';
 
 function formatDate(value, compact = false) {
   if (!value) return '';
@@ -399,6 +401,8 @@ function ResultPage({
           </button>
         </div>
       </ContactForm>
+
+      <CoDevelopedBy />
     </section>
   );
 }

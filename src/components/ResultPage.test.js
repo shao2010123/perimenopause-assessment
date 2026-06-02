@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   REPORT_ACTION_PRIMARY_CLASS,
+  REPORT_PAGE_FOOTER_COMPONENT,
   REPORT_ACTION_SECONDARY_BUTTON_CLASS,
   REPORT_ACTION_SECONDARY_CLASS,
 } from './ResultPage.jsx';
@@ -14,5 +15,9 @@ describe('ResultPage report action layout', () => {
   it('uses the same outline frame style for the restart action', () => {
     expect(REPORT_ACTION_SECONDARY_BUTTON_CLASS).toContain('primary-outline-button');
     expect(REPORT_ACTION_SECONDARY_BUTTON_CLASS).not.toContain('ghost-button');
+  });
+
+  it('renders the shared footer at the bottom of the report page', () => {
+    expect(REPORT_PAGE_FOOTER_COMPONENT).toBe('CoDevelopedBy');
   });
 });
