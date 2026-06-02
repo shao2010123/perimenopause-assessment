@@ -300,7 +300,7 @@ describe('uploadReportPdfToFeishu', () => {
         headers: expect.objectContaining({ Authorization: 'Bearer tenant_token' }),
       }),
     );
-    const patchedFields = JSON.parse(fetchImpl.mock.calls[4][1].body).fields;
+    const patchedFields = JSON.parse(fetchImpl.mock.calls[4][1].body);
     expect(patchedFields['PDF报告']).toEqual([
       { file_token: 'old_file', name: 'old.pdf' },
       { file_token: 'new_file', name: '林女士-RPT-PDF-OPENAPI.pdf' },
@@ -343,6 +343,60 @@ describe('uploadReportPdfToFeishu', () => {
 });
 
 describe('uploadReportHtmlToFeishu', () => {
+  it('uploads and attaches an HTML file through Feishu OpenAPI when app credentials are configured', async () => {
+    const fetchImpl = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ code: 0, tenant_access_token: 'tenant_token' }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ code: 0, data: { field: { field_name: 'HTML报告', type: 17 } } }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ code: 0, data: { record: { fields: { HTML报告: [{ file_token: 'old_html', name: 'old.html' }] } } } }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ code: 0, data: { file_token: 'new_html' } }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ code: 0 }),
+      });
+    const runCli = vi.fn();
+
+    const result = await uploadReportHtmlToFeishu(
+      {
+        recordId: 'rec_html',
+        reportId: 'RPT-HTML-OPENAPI',
+        fileName: '林女士-RPT-HTML-OPENAPI.html',
+        htmlBase64: Buffer.from('<!doctype html><html></html>').toString('base64'),
+      },
+      {
+        fetchImpl,
+        runCli,
+        env: {
+          FEISHU_APP_ID: 'cli_test_app',
+          FEISHU_APP_SECRET: 'secret',
+          FEISHU_BASE_TOKEN: 'base_token',
+          FEISHU_TABLE_ID: 'table_id',
+          FEISHU_HTML_FIELD_ID: 'fld_html',
+        },
+      },
+    );
+
+    expect(result).toEqual({ success: true, recordId: 'rec_html' });
+    expect(runCli).not.toHaveBeenCalled();
+    const patchedFields = JSON.parse(fetchImpl.mock.calls[4][1].body);
+    expect(patchedFields['HTML报告']).toEqual([
+      { file_token: 'old_html', name: 'old.html' },
+      { file_token: 'new_html', name: '林女士-RPT-HTML-OPENAPI.html' },
+    ]);
+  });
+
   it('uploads an HTML file to the configured attachment field', async () => {
     const runCli = vi.fn(async () => ({
       stdout: JSON.stringify({ ok: true }),

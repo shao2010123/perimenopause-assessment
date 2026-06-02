@@ -255,9 +255,7 @@ async function patchPdfAttachment(config, tenantAccessToken, { recordId, fieldNa
       method: 'PATCH',
       headers: getBearerHeaders(tenantAccessToken, { 'Content-Type': 'application/json' }),
       body: JSON.stringify({
-        fields: {
-          [fieldName]: attachments,
-        },
+        [fieldName]: attachments,
       }),
     },
   );
@@ -271,9 +269,7 @@ async function patchHtmlAttachment(config, tenantAccessToken, { recordId, fieldN
       method: 'PATCH',
       headers: getBearerHeaders(tenantAccessToken, { 'Content-Type': 'application/json' }),
       body: JSON.stringify({
-        fields: {
-          [fieldName]: attachments,
-        },
+        [fieldName]: attachments,
       }),
     },
   );
