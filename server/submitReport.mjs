@@ -73,13 +73,48 @@ function getBearerHeaders(tenantAccessToken, extra = {}) {
 }
 
 function extractRecordId(payload) {
-  return (
+  const directId =
     payload.data?.record?.record_id ??
     payload.data?.record?.id ??
     payload.data?.record?.record_id_list?.[0] ??
     payload.data?.record_id ??
     payload.data?.id ??
-    null
+    null;
+
+  if (typeof directId === 'string' && directId) return directId;
+
+  const seen = new Set();
+  const findRecordId = (value) => {
+    if (!value) return null;
+    if (typeof value === 'string') return value.startsWith('rec') ? value : null;
+    if (typeof value !== 'object' || seen.has(value)) return null;
+
+    seen.add(value);
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        const match = findRecordId(item);
+        if (match) return match;
+      }
+      return null;
+    }
+
+    const preferredKeys = ['record_id', 'recordId', 'id'];
+    for (const key of preferredKeys) {
+      const match = findRecordId(value[key]);
+      if (match) return match;
+    }
+
+    for (const item of Object.values(value)) {
+      const match = findRecordId(item);
+      if (match) return match;
+    }
+
+    return null;
+  };
+
+  return (
+    findRecordId(payload.data) ??
+    findRecordId(payload)
   );
 }
 
@@ -429,9 +464,11 @@ export async function submitReportToFeishu(snapshot, options = {}) {
     },
   );
   const payload = await readJsonResponse(response, '写入飞书多维表格失败');
+  const recordId = extractRecordId(payload);
+  if (!recordId) throw new Error('飞书未返回记录 ID，无法继续上传报告');
 
   return {
     success: true,
-    recordId: extractRecordId(payload),
+    recordId,
   };
 }
